@@ -1,3 +1,5 @@
+# EKS Presentation Indonesia Belajar Channel
+
 1. Create mysql cdk deployment ==DONE==
 2. Test the vpc peering script ==DONE==
 3. Create deployment with the Kubernetes secret to store the password ==DONE==
