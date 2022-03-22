@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phonebook-deployment
+  labels:
+    app: phonebook
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: phonebook
+  template:
+    metadata:
+      labels:
+        app: phonebook
+    spec:
+      containers:
+      - name: web
+        image: tedytirta/sample-phonebook-app
+        ports:
+        - containerPort: 8080
+        env:
+          - name: DB_HOST
+            valueFrom:
+              secretKeyRef:
+                name: dbsecret
+                key: dbhost
+          - name: DB_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: dbsecret
+                key: dbname
+          - name: DB_PORT
+            valueFrom:
+              secretKeyRef:
+                name: dbsecret
+                key: dbport
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: dbsecret
+                key: username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: dbsecret
+                key: password

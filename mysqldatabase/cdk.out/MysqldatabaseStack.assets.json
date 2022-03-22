@@ -1,0 +1,19 @@
+{
+  "version": "16.0.0",
+  "files": {
+    "1aa4696b587f6e9058ae1ccd52715c97e585a0281b3b2edc9a781ba6784e69ac": {
+      "source": {
+        "path": "MysqldatabaseStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "1aa4696b587f6e9058ae1ccd52715c97e585a0281b3b2edc9a781ba6784e69ac.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

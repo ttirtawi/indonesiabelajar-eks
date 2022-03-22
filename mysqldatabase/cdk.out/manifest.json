@@ -1,0 +1,262 @@
+{
+  "version": "16.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "MysqldatabaseStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "MysqldatabaseStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "MysqldatabaseStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "MysqldatabaseStack.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1aa4696b587f6e9058ae1ccd52715c97e585a0281b3b2edc9a781ba6784e69ac.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "MysqldatabaseStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "MysqldatabaseStack.assets"
+      ],
+      "metadata": {
+        "/MysqldatabaseStack/vpc/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcA2121C38"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/publicSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcpublicSubnet1SubnetA635257E"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/publicSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcpublicSubnet1RouteTableA38152FE"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/publicSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcpublicSubnet1RouteTableAssociationB46101B8"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/publicSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcpublicSubnet1DefaultRouteF0973989"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/publicSubnet1/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcpublicSubnet1EIP909BE2D3"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/publicSubnet1/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcpublicSubnet1NATGateway974E731F"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/publicSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcpublicSubnet2Subnet027D165B"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/publicSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcpublicSubnet2RouteTableA6135437"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/publicSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcpublicSubnet2RouteTableAssociation73F6478A"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/publicSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcpublicSubnet2DefaultRoute13685A07"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/privateSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcprivateSubnet1SubnetAE1393DC"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/privateSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcprivateSubnet1RouteTableC1CE9D76"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/privateSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcprivateSubnet1RouteTableAssociationD9FC1FAE"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/privateSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcprivateSubnet1DefaultRoute22F06BF9"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/privateSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcprivateSubnet2Subnet1C8B0CEE"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/privateSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcprivateSubnet2RouteTable882A110C"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/privateSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcprivateSubnet2RouteTableAssociationF1D5617F"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/privateSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcprivateSubnet2DefaultRouteF7D5A1BD"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/IGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcIGWE57CBDCA"
+          }
+        ],
+        "/MysqldatabaseStack/vpc/VPCGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcVPCGW7984C166"
+          }
+        ],
+        "/MysqldatabaseStack/MysqldatabaseStack-dbSubnetGroup/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MysqldatabaseStackdbSubnetGroup"
+          }
+        ],
+        "/MysqldatabaseStack/MysqldatabaseStack-DbSecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MysqldatabaseStackDbSecurityGroup322BE505"
+          }
+        ],
+        "/MysqldatabaseStack/MysqldatabaseStack-dbSecret/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MysqldatabaseStackdbSecret751CD9E9"
+          }
+        ],
+        "/MysqldatabaseStack/MysqldatabaseStack-dbSecret/Attachment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MysqldatabaseStackdbSecretAttachment204A90BF"
+          }
+        ],
+        "/MysqldatabaseStack/rds/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "rds3515897F"
+          }
+        ],
+        "/MysqldatabaseStack/dbUsername": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "dbUsername"
+          }
+        ],
+        "/MysqldatabaseStack/dbName": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "dbName"
+          }
+        ],
+        "/MysqldatabaseStack/vpcId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcId"
+          }
+        ],
+        "/MysqldatabaseStack/dbHost": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "dbHost"
+          }
+        ],
+        "/MysqldatabaseStack/dbSecurityGroup": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "dbSecurityGroup"
+          }
+        ],
+        "/MysqldatabaseStack/secretArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "secretArn"
+          }
+        ],
+        "/MysqldatabaseStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/MysqldatabaseStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/MysqldatabaseStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/MysqldatabaseStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "MysqldatabaseStack"
+    }
+  }
+}
