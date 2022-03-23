@@ -446,3 +446,18 @@ Using the Application Load Balancer controller, we will deploy another Service &
                   port:
                     number: 80  
     ```
+
+
+## Cleanup
+
+At this point you already able to:
+
+1. Create a RDS MySQL Database using AWS CDK. 
+2. Create an EKS cluster with AWS Load Balancer controller.
+3. Create VPC Peering.
+4. Deploy a sample application & expose the HTTP service using an AWS Network Load Balancer.
+5. Create Kubernetes Ingress to expose HTTP service using AWS Application Load Balancer.
+
+For more information visit [EKS documentation page](https://docs.aws.amazon.com/eks/latest/userguide).
+
+Don't forget to clean up the resouces you created in this tutorial.
