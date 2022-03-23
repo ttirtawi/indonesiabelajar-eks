@@ -338,15 +338,17 @@ In the previous step we alreaady able to expose our application using AWS Classi
 To deploy AWS Load Balancer controller you can execute the following command (don't forget to update clusterName if you use the different cluster name then `indonesiabelajar`):
 
 ```
+curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.1/docs/install/iam_policy.json
+
+aws iam create-policy \
+    --policy-name AWSLoadBalancerControllerIAMPolicy \
+    --policy-document file://iam_policy.json
+
 helm repo add eks https://aws.github.io/eks-charts
 
 helm repo update
 
-helm install aws-load-balancer-controller eks/aws-load-balancer-controller  \
- 	-n kube-system   \
-	--set clusterName=indonesiabelajar \
-	--set serviceAccount.create=false \  
-	--set serviceAccount.name=aws-load-balancer-controller
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system --set clusterName=indonesiabelajar --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller
 ```
 
 Use the following command to validate the result:
