@@ -1,7 +1,7 @@
 {
   "version": "16.0.0",
   "files": {
-    "1aa4696b587f6e9058ae1ccd52715c97e585a0281b3b2edc9a781ba6784e69ac": {
+    "7661c008c492afb4af4504926637a63354948fc7231309ec72f14f057d484cd9": {
       "source": {
         "path": "MysqldatabaseStack.template.json",
         "packaging": "file"
@@ -9,7 +9,7 @@
       "destinations": {
         "current_account-current_region": {
           "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "1aa4696b587f6e9058ae1ccd52715c97e585a0281b3b2edc9a781ba6784e69ac.json",
+          "objectKey": "7661c008c492afb4af4504926637a63354948fc7231309ec72f14f057d484cd9.json",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
         }
       }

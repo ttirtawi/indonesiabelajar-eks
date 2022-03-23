@@ -872,6 +872,14 @@
               "version": "2.17.0"
             }
           },
+          "secretId": {
+            "id": "secretId",
+            "path": "MysqldatabaseStack/secretId",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.17.0"
+            }
+          },
           "CDKMetadata": {
             "id": "CDKMetadata",
             "path": "MysqldatabaseStack/CDKMetadata",

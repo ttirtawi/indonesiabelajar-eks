@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1aa4696b587f6e9058ae1ccd52715c97e585a0281b3b2edc9a781ba6784e69ac.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/7661c008c492afb4af4504926637a63354948fc7231309ec72f14f057d484cd9.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -229,6 +229,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "secretArn"
+          }
+        ],
+        "/MysqldatabaseStack/secretId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "secretId"
           }
         ],
         "/MysqldatabaseStack/CDKMetadata/Default": [

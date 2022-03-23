@@ -93,5 +93,6 @@ export class MysqldatabaseStack extends Stack {
     new CfnOutput(this, 'dbHost', {value: dbhost.dbInstanceEndpointAddress});
     new CfnOutput(this, 'dbSecurityGroup', {value: dbSecurityGroup.securityGroupId});
     new CfnOutput(this, 'secretArn', {value: dbSecret.secretArn});
+    new CfnOutput(this, 'secretId', {value: dbSecret.secretName});
   }
 }
