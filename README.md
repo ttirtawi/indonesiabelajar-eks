@@ -365,20 +365,20 @@ Using the Application Load Balancer controller, we will deploy another Service &
 	apiVersion: v1
 	kind: Service
 	metadata:
-    name: service-nlb
-    labels:
-      app: phonebook
-    annotations:
-      service.beta.kubernetes.io/aws-load-balancer-type: nlb
+      name: service-nlb
+      labels:
+        app: phonebook
+      annotations:
+        service.beta.kubernetes.io/aws-load-balancer-type: nlb
 	spec:
-    selector:
-      app: phonebook
-    ports:
-      - name: http
-        protocol: TCP
-        port: 80
-        targetPort: 8080
-    type: LoadBalancer
+      selector:
+        app: phonebook
+      ports:
+        - name: http
+          protocol: TCP
+          port: 80
+          targetPort: 8080
+      type: LoadBalancer
 	```
 
     To create the service execute the following command:
