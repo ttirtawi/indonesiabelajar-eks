@@ -144,7 +144,7 @@ To deploy the stack follow the following steps:
 4. To get the password of the MySQL database, execute the following command (replace SECRET_ID with the `secretId` value ):
 
 	```
-	aws secretsmanager get-secret-value --secret-id <SECRET_ID>
+	aws secretsmanager get-secret-value --secret-id <SECRET_ID> --query SecretString --output text | jq -r .password
 	```
 
 ### Deploy EKS Cluster
@@ -211,7 +211,7 @@ You will see "Connected to" message that indicates both peering & route table al
 
 ### Create Kubernetes deployment
 
-1. First we need to create Kubernetes Secret to store database details. We will use the template below, save it as `secret.yml` file:
+1. First we need to create Kubernetes Secret to store database details. We will use the template `secret.yml` file located in the project root folder which looks like this:
 
 
 	```
@@ -234,51 +234,93 @@ You will see "Connected to" message that indicates both peering & route table al
 	kubectl apply -f secret.yml
 	```
 
-2. Create deployment file
+2. Next we will create the Kubernetes Deployment using the existing template called `deployment.yml` which looks like this:
+
+	```
+	apiVersion: apps/v1
+	kind: Deployment
+	metadata:
+	  name: phonebook-deployment
+	  labels:
+	    app: phonebook
+	spec:
+	  replicas: 2
+	  selector:
+	    matchLabels:
+	      app: phonebook
+	  template:
+	    metadata:
+	      labels:
+	        app: phonebook
+	    spec:
+	      containers:
+	      - name: web
+	        image: tedytirta/sample-phonebook-app
+	        ports:
+	        - containerPort: 8080
+	        env:
+	          - name: DB_HOST
+	            valueFrom:
+	              secretKeyRef:
+	                name: dbsecret
+	                key: dbhost
+	          - name: DB_DATABASE
+	            valueFrom:
+	              secretKeyRef:
+	                name: dbsecret
+	                key: dbname
+	          - name: DB_PORT
+	            valueFrom:
+	              secretKeyRef:
+	                name: dbsecret
+	                key: dbport
+	          - name: DB_USERNAME
+	            valueFrom:
+	              secretKeyRef:
+	                name: dbsecret
+	                key: username
+	          - name: DB_PASSWORD
+	            valueFrom:
+	              secretKeyRef:
+	                name: dbsecret
+	                key: password
+	```
+
+	You don't need to change anything in this file. To deploy the file execute the following command:
+
+	```
+	kubectl apply -f deployment.yml
+	```
+
+3. To check deployment result we can use the following command:
+
+	```
+	kubectl get pod -w
+	```
+	
+	You should see 2 pods has been created.
 
 
 ### Expose the service
 
+Now we have already couple pods already running. We need to expose the pods using Kubernetes Service so that we can access the application from the internet.
 
-1. Create mysql cdk deployment ==DONE==
-2. Test the vpc peering script ==DONE==
-3. Create deployment with the Kubernetes secret to store the password ==DONE==
-4. Install ALB Controller
-5. Deploy  
-
-Expose the service using CLB:
+Run the following command to create Kubernetes Service:
 
 ```
 kubectl expose deployment phonebook-deployment --port=80 --target-port=8080 --type=LoadBalancer
 ```
 
-Get mysql db password:
+The command above will create `LoadBalancer` Service using in-tree Kubernetes legacy controller. The legacy in-tree controller will create AWS Classic Load Balancer facing the internet. Execute the following command to check the status:
 
 ```
-aws secretsmanager get-secret-value --secret-id <SECRET_ID> --query SecretString --output text | jq -r .password
+kubectl get service
 ```
 
-```
-kubectl get secret dbsecret -o jsonpath='{.data.password}'
-```
+You will see the domain name of Classic Load Balancer under EXTERNAL-IP column. It might take few seconds before the CLB is fully provisioned. 
 
+Verify the result by opening the URL in the web browser. You should able to access the application.
 
-Demo step
+![](clb-success-web.png)
 
-1. Show the sample running application
-2. Describe the application architecture, explain the RDS that already precreated
-3. Explain the cluster creation using eksctl
-4. Continue presentation
-5. When cluster already created, create the peering
-6. Populate db credential & create the Kubernetes secret  
-7. Create deployment
-8. Expose the service using CLB:
-
-	```
-	kubectl expose deployment phonebook-deployment --port=80 --target-port=8080 --type=LoadBalancer
-	```
-
-9. Setup application load balancer controller
-10. Create service & ingress
-11. Optional create https ingress
-
+You can try to insert some data using Phonebook menu to validate the database connection.
