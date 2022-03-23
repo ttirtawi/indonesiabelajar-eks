@@ -156,13 +156,15 @@ To deploy the stack follow the following steps:
 	```
 	cd ..
 	```
-2. We will use `cluster.yml` as cluster definition template. To deploy the cluster using the file, execute the following command:
+2. We will use `cluster.yml` as cluster definition template. This will create a new EKS cluster named `indonesiabelajar` in Singapore (`ap-southeast-1`) region. 
 
-	```
-	eksctl create cluster -f cluster.yml
-	```
+    To deploy the cluster using the file, execute the following command:
 
-	This will create a new EKS cluster named `indonesiabelajar`. 
+    ```
+    eksctl create cluster -f cluster.yml
+    ```
+
+	
 
 3. When `eksctl` completed cluster creation, it will automatically add new entry in your `~/.kube/config` file & activate the context. You can test by checking the worker node status using the following command:
 
