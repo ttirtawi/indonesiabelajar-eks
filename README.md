@@ -130,6 +130,8 @@ To deploy the stack follow the following steps:
 
 	You will be asked to confirm the deployment by typing `Yes/Y`.
 
+    **Remember**: if you haven't use the CDK before, you must run `cdk bootstrap` first.
+
 3. Wait for a moment until the deployment completed. You will see the output similar to the screenshot below
 
 	![](cdk-deploy-mysql.png)
