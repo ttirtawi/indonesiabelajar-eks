@@ -141,7 +141,6 @@ To deploy the stack follow the following steps:
 	- `vpcId`: you will need the VPC ID value later when creating VPC Peering.
 	- `secretId`: you will need the Secret ID value to retrieving database password.
 	- `dbHost`: this is database endpoint URL, you will need this value later when creating Kubernetes Secret. 
-	- 
 
 4. To get the password of the MySQL database, execute the following command (replace SECRET_ID with the `secretId` value ):
 
