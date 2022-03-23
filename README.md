@@ -217,20 +217,19 @@ You will see "Connected to" message that indicates both peering & route table al
 
 1. First we need to create Kubernetes Secret to store database details. We will use the template `secret.yml` file located in the project root folder which looks like this:
 
-
-	```
-	apiVersion: v1
-	kind: Secret
-	metadata:
-		name: dbsecret
-	type: Opaque
-	stringData:
-		username: "mydbuser"
-		password: "<DB_PASSWORD>"
-		dbhost: "<DB_HOSTNAME>"
-		dbname: "mydb"
-		dbport: "3306"
-	```
+	  ```
+    apiVersion: v1
+    kind: Secret
+    metadata:
+        name: dbsecret
+    type: Opaque
+    stringData:
+        username: "mydbuser"
+        password: "<DB_PASSWORD>"
+        dbhost: "<DB_HOSTNAME>"
+        dbname: "mydb"
+        dbport: "3306"
+	  ```
 
 	Update the password & RDS MySQL endpoint. Execute the following command to create the secret:
 
