@@ -365,7 +365,7 @@ Using the Application Load Balancer controller, we will deploy another Service &
 	apiVersion: v1
 	kind: Service
 	metadata:
-		name: service-nlb
+    name: service-nlb
     labels:
       app: phonebook
     annotations:
