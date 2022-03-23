@@ -225,11 +225,11 @@ You will see "Connected to" message that indicates both peering & route table al
 		name: dbsecret
 	type: Opaque
 	stringData:
-		username: mydbuser
-		password: <DB_PASSWORD>
-		dbhost: <DB_HOSTNAME>
-		dbname: mydb
-		dbport: 3306
+		username: "mydbuser"
+		password: "<DB_PASSWORD>"
+		dbhost: "<DB_HOSTNAME>"
+		dbname: "mydb"
+		dbport: "3306"
 	```
 
 	Update the password & RDS MySQL endpoint. Execute the following command to create the secret:
