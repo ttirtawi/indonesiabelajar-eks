@@ -114,9 +114,6 @@ In this demo we will split the activities into several sections:
 5. Expose the service
 6. Install AWS Load Balancer Controller add-on
 
-
-
-
 ### Prepare RDS MySQL database
 
 The stack to deploy RDS MySQL are located in `mysqldatabase` folder. There are some predefined values in the stack:
@@ -168,6 +165,7 @@ To deploy the stack follow the following steps:
 	```
 	cd ..
 	```
+
 2. We will use `cluster.yml` as cluster definition template. This will create a new EKS cluster named `indonesiabelajar` in Singapore (`ap-southeast-1`) region. 
 
     To deploy the cluster using the file, execute the following command:
@@ -175,8 +173,6 @@ To deploy the stack follow the following steps:
     ```
     eksctl create cluster -f cluster.yml
     ```
-
-	
 
 3. When `eksctl` completed cluster creation, it will automatically add new entry in your `~/.kube/config` file & activate the context. You can test by checking the worker node status using the following command:
 
@@ -201,6 +197,7 @@ bash createPeering.sh -s <RDS_VPC_ID> -d <EKS_VPC_ID> -n <PEERING_NAME> -a CREAT
 ```
 
 The script above will:
+
 1. Create VPC peering between RDS VPC & EKS VPC
 2. Update the route tables on each VPC to add remote CIDR route via VPC Peering.
 
@@ -223,7 +220,6 @@ pod "testpeering" deleted
 ```
 
 You will see "Connected to" message that indicates both peering & route table already updated properly.
-
 
 ### Create Kubernetes deployment
 
@@ -347,7 +343,7 @@ In the previous step we alreaady able to expose our application using AWS Classi
 1. Kubernetes Service as AWS Network Load Balancer
 2. Kubernetes Ingress as AWS Application Load Balancer
 
-To deploy AWS Load Balancer controller you can execute the following command (don't forget to update clusterName if you use the different cluster name then `indonesiabelajar`):
+To deploy AWS Load Balancer controller you can execute the following commands (don't forget to update clusterName if you use the different cluster name then `indonesiabelajar`):
 
 ```
 curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.1/docs/install/iam_policy.json
