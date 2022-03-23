@@ -393,6 +393,8 @@ Using the Application Load Balancer controller, we will deploy another Service &
     kubectl get service service-nlb
     ```
 
+    You can find the Network Load Balancer (NLB) DNS name under EXTERNAL-IP column.
+
 3. Now we will create Ingress using existing file `ingress.yml`, let's examine the content:
 
     ```
@@ -428,6 +430,8 @@ Using the Application Load Balancer controller, we will deploy another Service &
     ```
     kubectl get ingress ingress-http
     ```
+
+     You can find the Application Load Balancer (ALB) DNS name under ADDRESS column.
 
 5. (Optional) We have the option to create HTTPS ingress. The difference in manifest only on the Certificate CRN and the domain name. You need to store/create SSL Certificate in the AWS Certificate Manager. 
 
