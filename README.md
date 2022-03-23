@@ -317,7 +317,7 @@ kubectl expose deployment phonebook-deployment --port=80 --target-port=8080 --ty
 The command above will create `LoadBalancer` Service using in-tree Kubernetes legacy controller. The legacy in-tree controller will create AWS Classic Load Balancer facing the internet. Execute the following command to check the status:
 
 ```
-kubectl get service
+kubectl get service phonebook-deployment
 ```
 
 You will see the domain name of Classic Load Balancer under EXTERNAL-IP column. It might take few seconds before the CLB is fully provisioned. 
