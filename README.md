@@ -433,7 +433,7 @@ Using the Application Load Balancer controller, we will deploy another Service &
 
      You can find the Application Load Balancer (ALB) DNS name under ADDRESS column.
 
-5. (Optional) We have the option to create HTTPS ingress. The difference in manifest only on the Certificate CRN and the domain name. You need to store/create SSL Certificate in the AWS Certificate Manager. 
+5. (Optional) We have the option to create HTTPS load balancer as well. The difference in manifest only on the Certificate CRN and the domain name. You need to store/create SSL Certificate in the AWS Certificate Manager. 
 
     ```
     apiVersion: networking.k8s.io/v1
