@@ -324,3 +324,123 @@ Verify the result by opening the URL in the web browser. You should able to acce
 ![](clb-success-web.png)
 
 You can try to insert some data using Phonebook menu to validate the database connection.
+
+### Install AWS Load Balancer Controller add-on
+
+In the previous step we alreaady able to expose our application using AWS Classic Load Balancer. However it still use Kubernetes legacy in-tree controller. The new approach is to use AWS Load Balancer Controller. Using AWS Load Balancer controller you can create the following:
+
+1. Kubernetes Service as AWS Network Load Balancer
+2. Kubernetes Ingress as AWS Application Load Balancer
+
+To deploy AWS Load Balancer controller you can execute the following command (don't forget to update clusterName if you use the different cluster name then `indonesiabelajar`):
+
+```
+helm repo add eks https://aws.github.io/eks-charts
+
+helm repo update
+
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller  \
+ 	-n kube-system   \
+	--set clusterName=indonesiabelajar \
+	--set serviceAccount.create=false \  
+	--set serviceAccount.name=aws-load-balancer-controller
+```
+
+Use the following command to validate the result:
+
+```
+kubectl get deployment -n kube-system aws-load-balancer-controller
+```
+
+Using the Application Load Balancer controller, we will deploy another Service & Ingress as follow:
+
+1. We will create Service using existing file `service-nlb.yml`, let's examine the content:
+
+	```
+	apiVersion: v1
+	kind: Service
+	metadata:
+		name: service-nlb
+    labels:
+      app: phonebook
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: nlb
+	spec:
+    selector:
+      app: phonebook
+    ports:
+      - name: http
+        protocol: TCP
+        port: 80
+        targetPort: 8080
+    type: LoadBalancer
+	```
+
+    To create the service execute the following command:
+
+    ```
+    kubectl apply -f service-nlb.yml
+    ```
+
+2. To check the output use the following command:
+
+    ```
+    kubectl get service service-nlb
+    ```
+
+3. Now we will create Ingress using existing file `ingress.yml`, let's examine the content:
+
+    ```
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: "ingress-http"
+      annotations:
+        kubernetes.io/ingress.class: alb
+        alb.ingress.kubernetes.io/scheme: internet-facing
+        alb.ingress.kubernetes.io/target-type: ip
+    spec:
+      rules:
+        - http:
+            paths:
+            - path: /
+              pathType: Prefix
+              backend:
+                service:
+                  name: service-nlb
+                  port:
+                    number: 80  
+    ```
+
+4. To check the output use the following command:
+
+    ```
+    kubectl get ingress ingress-http
+    ```
+
+
+5. (Optional) We have the option to create HTTPS ingress. The difference in manifest only on the Certificate CRN and the domain name. You need to store/create SSL Certificate in the AWS Certificate Manager. 
+
+    ```
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: "ingress-https"
+      annotations:
+        kubernetes.io/ingress.class: alb
+        alb.ingress.kubernetes.io/scheme: internet-facing
+        alb.ingress.kubernetes.io/target-type: ip
+        alb.ingress.kubernetes.io/certificate-arn: <CERT_ARN>
+    spec:
+      rules:
+        - host: <DOMAIN_NAME>
+          http:
+            paths:
+            - path: /
+              pathType: Prefix
+              backend:
+                service:
+                  name: service-nlb
+                  port:
+                    number: 80  
+    ```
