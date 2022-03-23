@@ -148,6 +148,8 @@ To deploy the stack follow the following steps:
 	aws secretsmanager get-secret-value --secret-id <SECRET_ID> --query SecretString --output text | jq -r .password
 	```
 
+    Keep the password safe, we will going to need it when creating Kubernetes Secret.
+
 ### Deploy EKS Cluster
 
 1. Go back to the project root directory.
