@@ -381,7 +381,7 @@ Using the Application Load Balancer controller, we will deploy another Service &
       type: LoadBalancer
 	```
 
-    To create the service execute the following command:
+    To create the Service execute the following command:
 
     ```
     kubectl apply -f service-nlb.yml
@@ -417,7 +417,7 @@ Using the Application Load Balancer controller, we will deploy another Service &
                     number: 80  
     ```
 
-    To create the service execute the following command:
+    To create the Ingress execute the following command:
 
     ```
     kubectl apply -f ingress.yml
