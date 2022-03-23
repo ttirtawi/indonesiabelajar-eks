@@ -417,12 +417,17 @@ Using the Application Load Balancer controller, we will deploy another Service &
                     number: 80  
     ```
 
+    To create the service execute the following command:
+
+    ```
+    kubectl apply -f ingress.yml
+    ```
+
 4. To check the output use the following command:
 
     ```
     kubectl get ingress ingress-http
     ```
-
 
 5. (Optional) We have the option to create HTTPS ingress. The difference in manifest only on the Certificate CRN and the domain name. You need to store/create SSL Certificate in the AWS Certificate Manager. 
 
