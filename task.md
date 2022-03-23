@@ -211,7 +211,7 @@ You will see "Connected to" message that indicates both peering & route table al
 
 ### Create Kubernetes deployment
 
-1. Create Secret to store database details. We will use the template below:
+1. First we need to create Kubernetes Secret to store database details. We will use the template below, save it as `secret.yml` file:
 
 
 	```
@@ -228,9 +228,13 @@ You will see "Connected to" message that indicates both peering & route table al
 		dbport: 3306
 	```
 
-	Update the password & RDS MySQL endpoint.
+	Update the password & RDS MySQL endpoint. Execute the following command to create the secret:
 
-2. 
+	```
+	kubectl apply -f secret.yml
+	```
+
+2. Create deployment file
 
 
 ### Expose the service
