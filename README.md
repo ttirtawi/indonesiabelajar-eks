@@ -343,7 +343,7 @@ In the previous step we alreaady able to expose our application using AWS Classi
 1. Kubernetes Service as AWS Network Load Balancer
 2. Kubernetes Ingress as AWS Application Load Balancer
 
-To deploy AWS Load Balancer controller you can execute the following commands (don't forget to update clusterName if you use the different cluster name then `indonesiabelajar`):
+To deploy AWS Load Balancer controller you can execute the following commands (don't forget to update `clusterName` if you use the different cluster name rather then `indonesiabelajar`):
 
 ```
 curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.1/docs/install/iam_policy.json
