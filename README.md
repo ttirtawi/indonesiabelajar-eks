@@ -105,6 +105,18 @@ r detail installation steps. Example command to install in Linux:
 
 ## Deployment Steps
 
+In this demo we will split the activities into several sections:
+
+1. Prepare RDS MySQL database
+2. Deploy EKS Cluster
+3. Create VPC Peering
+4. Create Kubernetes deployment
+5. Expose the service
+6. Install AWS Load Balancer Controller add-on
+
+
+
+
 ### Prepare RDS MySQL database
 
 The stack to deploy RDS MySQL are located in `mysqldatabase` folder. There are some predefined values in the stack:
