@@ -21,7 +21,6 @@ managedNodeGroups:
     volumeSize: 20
     ssh:
       allow: true
-      publicKeyName: cgktest-sin
     iam:
       withAddonPolicies:
         autoScaler: true
