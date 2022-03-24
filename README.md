@@ -1,7 +1,5 @@
 # EKS Presentation Indonesia Belajar Channel
 
-## Introduction
-
 In this demo we will deploy the simple phonebook application to the Elastic Kubernetes Service (EKS) cluster. 
 
 The following diagram depict the architecture of the application:
@@ -28,7 +26,7 @@ Here is some details of the architecture:
 	- First we will use in-tree controller that will create Classic Load Balancer
 
 
-## Prerequisites
+## 🚀 Prerequisites
 
 1. Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html). Follow by setup AWS CLI using `aws configure` command. You can reuse credential from existing
 IAM users or [create new one](https://aws.amazon.com/premiumsupport/knowledge-center/create-access-key/).
@@ -103,7 +101,7 @@ r detail installation steps. Example command to install in Linux:
 	git clone https://github.com/ttirtawi/indonesiabelajar-eks
 	```
 
-## Deployment Steps
+## 🚀 Deployment Steps
 
 In this demo we will split the activities into several sections:
 
@@ -114,7 +112,7 @@ In this demo we will split the activities into several sections:
 5. Expose the service
 6. Install AWS Load Balancer Controller add-on
 
-### Prepare RDS MySQL database
+### 🔥 Prepare RDS MySQL database
 
 The stack to deploy RDS MySQL are located in `mysqldatabase` folder. There are some predefined values in the stack:
 
@@ -158,7 +156,7 @@ To deploy the stack follow the following steps:
 	```
     Keep the password safe, we will going to need it when creating Kubernetes Secret.
 
-### Deploy EKS Cluster
+### 🔥 Deploy EKS Cluster
 
 1. Go back to the project root directory.
 
@@ -186,7 +184,7 @@ To deploy the stack follow the following steps:
 	aws eks describe-cluster --name indonesiabelajar --query cluster.resourcesVpcConfig.vpcId --output text
 	```
 
-### Create VPC Peering
+### 🔥 Create VPC Peering
 
 In this section we will setup [VPC peering](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) so that our EKS cluster can talk to the RDS MySQL we had created earlier. 
 
@@ -221,7 +219,7 @@ pod "testpeering" deleted
 
 You will see "Connected to" message that indicates both peering & route table already updated properly.
 
-### Create Kubernetes deployment
+### 🔥 Create Kubernetes deployment
 
 1. First we need to create Kubernetes Secret to store database details. We will use the template `secret.yml` file located in the project root folder which looks like this:
 
@@ -312,7 +310,7 @@ You will see "Connected to" message that indicates both peering & route table al
 	You should see 2 pods has been created.
 
 
-### Expose the service
+### 🔥 Expose the service
 
 Now we have already couple pods already running. We need to expose the pods using Kubernetes Service so that we can access the application from the internet.
 
@@ -336,7 +334,7 @@ Verify the result by opening the URL in the web browser. You should able to acce
 
 You can try to insert some data using Phonebook menu to validate the database connection.
 
-### Install AWS Load Balancer Controller add-on
+### 🔥 Install AWS Load Balancer Controller add-on
 
 In the previous step we alreaady able to expose our application using AWS Classic Load Balancer. However it still use Kubernetes legacy in-tree controller. The new approach is to use AWS Load Balancer Controller. Using AWS Load Balancer controller you can create the following:
 
@@ -468,7 +466,7 @@ Using the Application Load Balancer controller, we will deploy another Service &
     ```
 
 
-## Cleanup
+## 🚀 Cleanup
 
 At this point you already able to:
 
