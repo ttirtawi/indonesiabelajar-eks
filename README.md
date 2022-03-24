@@ -343,7 +343,7 @@ In the previous step we alreaady able to expose our application using AWS Classi
 1. Kubernetes Service as AWS Network Load Balancer
 2. Kubernetes Ingress as AWS Application Load Balancer
 
-To deploy AWS Load Balancer controller you can execute the following commands (don't forget to update `clusterName` if you use the different cluster name other than `indonesiabelajar`):
+To deploy AWS Load Balancer controller you can execute the following 5 commands (don't forget to update `clusterName` if you use the different cluster name other than `indonesiabelajar`):
 
 ```
 curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.1/docs/install/iam_policy.json
@@ -480,4 +480,24 @@ At this point you already able to:
 
 For more information visit [EKS documentation page](https://docs.aws.amazon.com/eks/latest/userguide).
 
-Don't forget to clean up the resouces you created in this tutorial.
+Don't forget to clean up the resouces you created in this tutorial. The deletion process must be done in the following order:
+
+1. Delete the VPC peering using the following command:
+
+    ```
+    bash createPeering.sh -s <RDS_VPC_ID> -d <EKS_VPC_ID> -n <PEERING_NAME> -a DELETE
+    ```
+
+2. Delete EKS Cluster using the following command (change the name of the cluster if you create the cluster using different name):
+
+    ```
+    eksctl delete cluster --name indonesiabelajar
+    ```
+
+3. Delete the RDS stack using the following command (this should be done in the CDK folder, i.e. `mysqldatabase`):
+
+    ```
+    cd mysqldatabase && cdk destroy
+    ```
+
+    You will be asked to confirm the deletion by typing `Yes/Y`.
