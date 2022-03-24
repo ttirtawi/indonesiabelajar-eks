@@ -1,6 +1,6 @@
 # EKS Presentation Indonesia Belajar Channel
 
-In this demo we will deploy the simple phonebook application to the Elastic Kubernetes Service (EKS) cluster. 
+In this demo we will deploy the simple phonebook application to the Elastic Kubernetes Service (EKS) cluster. We will use sample phonebook application. This is NodeJS-based simple CRUD system which is built using ExpressJS, Sequelize, and MySQL database. You can see [**this quick video**](https://staticweb.awsbuilder.xyz/demophonebook.mp4) showing how the application looks like.
 
 The following diagram depict the architecture of the application:
 
