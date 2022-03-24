@@ -488,7 +488,7 @@ Don't forget to clean up the resouces you created in this tutorial. The deletion
     bash createPeering.sh -s <RDS_VPC_ID> -d <EKS_VPC_ID> -n <PEERING_NAME> -a DELETE
     ```
 
-2. Delete EKS Cluster using the following command (change the name of the cluster if you create the cluster using different name):
+2. Delete EKS Cluster using the following command (change the name of the cluster if you've created the cluster using different name):
 
     ```
     eksctl delete cluster --name indonesiabelajar
