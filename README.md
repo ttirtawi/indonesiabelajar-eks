@@ -465,6 +465,27 @@ Using the Application Load Balancer controller, we will deploy another Service &
                     number: 80  
     ```
 
+## (Optional) Running Pod in AWS Fargate
+
+AWS Fargate is serverless compute for container. We can configure our EKS cluster above to schedule a pod in AWS Fargate. Schedule is Kubernetes terminology that means start the pod up in the certain location (i.e. in EC2 worker or in Fargate).
+
+To enable Fargate support on AWS, we need to create Fargate Profile.
+
+```
+eksctl create fargateprofile --namespace dev --cluster indonesiabelajar --name fp-development
+```
+
+Above command will do the following tasks:
+
+1. Create a fargate profile called `fp-development` in EKS cluster named `indonesiabelajar`.
+2. Mark the profile for namespace `dev`. It means if you want your pod to be run on top of Fargate, you must create the pod in namespace called `dev`. You need to create that namespace if you don't have it yet.
+
+That's it, as simple like that. The same command can be also included in the cluster manifest file. 
+
+The step to create service & ingress will be same as already explain in the previous section. A important thing is with Fargate, you must use IP target instead of Instance target. 
+
+By default if you don't specify any cpu/memory requests in the pod spec, Fargate will assign 0.25 vCPU and 0.5 GB memory. Refer to this [doc](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html) for valid cpu/memory values for Fargate.
+
 
 ## 🚀 Cleanup
 
