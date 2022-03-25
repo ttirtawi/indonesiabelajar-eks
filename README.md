@@ -164,7 +164,7 @@ To deploy the stack follow the following steps:
 	cd ..
 	```
 
-2. We will use `cluster.yml` as cluster definition template. This will create a new EKS cluster named `indonesiabelajar` in Singapore (`ap-southeast-1`) region. 
+2. We will use [`cluster.yml`](cluster.yml) as cluster definition template. This will create a new EKS cluster named `indonesiabelajar` in Singapore (`ap-southeast-1`) region. 
 
     To deploy the cluster using the file, execute the following command:
 
